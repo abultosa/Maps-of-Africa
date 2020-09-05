@@ -1,0 +1,56 @@
+---
+title: "Maps-Of-Africa"
+author: "Student!"
+date: "9/5/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+#Load the needed libraries and create the maps targeting a specific location in Africa.
+
+```{r}
+library(leaflet)
+Addis_Ababa <- leaflet() %>%
+        addTiles()
+Addis_Ababa
+```
+
+#Adding Markers targeting a specific location on the generic map
+
+```{r}
+library(leaflet)
+Addis_Ababa <- Addis_Ababa %>%
+addMarkers(lat = 8.9806 , lng = 38.7578, popup = "Addis_Ababa")
+Addis_Ababa
+```
+
+
+```{r}
+dafa <- data.frame(lat = runif(500, min = 8.9806, max = 8.9806),
+                   lng = runif(500, min = 38.7578, max = 38.7578))
+dafa %>%
+        leaflet() %>%
+        addTiles() %>%
+        addMarkers()
+```
+
+```{r}
+dafa <- data.frame(lat = runif(500, min = 8.9806, max = 8.9806),
+                   lng = runif(500, min = 38.7578, max = 38.7578))
+dafa %>%
+        leaflet() %>%
+        addTiles() %>%
+        addMarkers(clusterOptions = markerClusterOptions())
+```
+```{r}
+dafa <- data.frame(lat = runif(500, min = 8.9806, max = 8.9806),
+                   lng = runif(500, min = 38.7578, max = 38.7578))
+dafa %>%
+        leaflet() %>%
+        addTiles() %>%
+        addCircleMarkers()
+```
+
